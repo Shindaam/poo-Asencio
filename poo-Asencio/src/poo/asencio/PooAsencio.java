@@ -17,6 +17,21 @@ public class PooAsencio {
     public static void main(String[] args) {
         // TODO code application logic here
         System.out.println("Hola Mundo");
+        
+        //Tenemos que generar antes los objetos de las clases anteriores
+        
+        
+        /*Constructor*/Usuario x=new Usuario();
+        x.altura=1.68f;
+        x.peso=71f;
+        /*Constructor*/Imc algo=new Imc();
+        /*Objeto algo.atributo u=x*/algo.u=x;
+        
+        
+        //Calculamos el imc a traves de su objeto
+        System.out.println(algo.calcular());
+        
+                
     }
     
 }
