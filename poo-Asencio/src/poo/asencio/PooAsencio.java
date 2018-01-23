@@ -22,8 +22,8 @@ public class PooAsencio {
         
         
         /*Constructor*/Usuario x=new Usuario();
-        x.altura=1.68f;
-        x.peso=71f;
+        x.setAltura(1.68f);
+        x.setPeso(71f);
         /*Constructor*/Imc algo=new Imc();
         /*Objeto algo.atributo u=x*/algo.u=x;
         
