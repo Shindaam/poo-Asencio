@@ -11,7 +11,7 @@ package poliejemplo;
  */
 public class Mascotas {
     public static void main(String[] args) {
-        ComportamientoAnimal animales[]=new [10];
+        Animal animales[]=new Animal[12];
         
         //primero generamos alos gatos
         animales [0]=new Gato();        
@@ -29,9 +29,17 @@ public class Mascotas {
          animales [7]=new Pollo();
          animales [8]=new Pollo();
          animales [9]=new Pollo();
+         
+         animales [10]=new Raton();
+         animales [11]=new Raton();
+         
+         ServicioAnimales s=new ServicioAnimales();
         
         //la magia del poliformismo!!
-        for(ComportamientoAnimal animal::animales)
+        for(Animal a:animales)
+        {
+        s.servicioHacerRuido((ComportamientoAnimal)a);
+        }
         
     }
     
