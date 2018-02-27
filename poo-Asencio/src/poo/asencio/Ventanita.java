@@ -1,5 +1,8 @@
 package poo.asencio;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -107,19 +110,28 @@ public class Ventanita extends javax.swing.JFrame {
     }//GEN-LAST:event_textoPesoActionPerformed
 
     private void textoCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoCalcularActionPerformed
-        // TODO add your handling code here:
-        //Pedimos el valor al texto peso
-        float peso=Float.parseFloat(textoPeso.getText());
-        float altura=Float.parseFloat(textoAltura.getText());
-        //Creamos nuestra  identidad
-        Usuario u=new Usuario();
-        u.setPeso(peso);
-        u.setAltura(altura);
-        //Generamos el modelo IMC
-        Imc x=new Imc();
-        x.u=u;
-        //en el imc que se llama x invocamos el metodo calcular
-        etiquetaResultado.setText(x.calcular());
+        try {
+            // TODO add your handling code here:
+            //Pedimos el valor al texto peso
+            float peso=Float.parseFloat(textoPeso.getText());
+            float altura=Float.parseFloat(textoAltura.getText());
+            //Creamos nuestra  identidad
+            Usuario u=new Usuario();
+            //Los validamos
+            ValidarCantidades.validarValorNegativo(altura);
+            ValidarCantidades.validarValorNegativo(peso);
+            
+            u.setPeso(peso);
+            u.setAltura(altura);
+            //Generamos el modelo IMC
+            Imc x=new Imc();
+            x.u=u;
+            //en el imc que se llama x invocamos el metodo calcular
+            etiquetaResultado.setText(x.calcular());
+        } catch (NumeroNegativoException ex) {
+            etiquetaResultado.setText(ex.getMessage()); 
+            //Logger.getLogger(Ventanita.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_textoCalcularActionPerformed
 
     /**
