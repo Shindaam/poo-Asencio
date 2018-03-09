@@ -26,7 +26,7 @@ public class PersistenciaUsuario {
             System.out.println("Objeto guardado con exito!!!");
         }catch (Exception e){
     }
-     
+    }
     
     public Usuario getU() {
         return u;
@@ -36,7 +36,7 @@ public void setU(Usuario u) {
     }
     
    
-public Usuario reobrarUsuario()
+public Usuario recobrarUsuario()
 {
     File file=new File ("archivo.ase");
     Usuario recobrado=null;
