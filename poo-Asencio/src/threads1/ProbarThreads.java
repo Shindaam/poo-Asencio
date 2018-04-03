@@ -17,9 +17,12 @@ public class ProbarThreads implements Runnable{
         TareaX t2=new TareaX();
         Runnable r=new ProbarThreads();
         Thread t3=new Thread(r);
-        Thread t4=new Thread(new Runnable()){
-        
-        };
+        Thread t4=new Thread(new Runnable() {
+            @Override
+            public void run() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        });
         //2.- Inicializado
         t1.setName("Floky");
         t1.start();
