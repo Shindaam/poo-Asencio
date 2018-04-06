@@ -6,8 +6,6 @@
 package threads1;
 
 import java.time.LocalTime;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -20,6 +18,31 @@ public class Relojito extends javax.swing.JFrame {
      */
     public Relojito() {
         initComponents();
+  
+                {
+                    Thread t1=new Thread (new Runnable() {
+                    @Override
+                    public void run(){
+                        while(true){
+                            try{
+                                
+                                LocalTime tiempo=LocalTime.now();
+                                int hora=tiempo.getHour();
+                                int minuto=tiempo.getMinute();
+                                int segundo=tiempo.getSecond();
+                                jLabel1.setText(""+hora+":"+minuto+":"+segundo);
+                                Thread.sleep(1000);
+                                
+                            }catch (InterruptedException ex){
+                                
+                            } 
+                        }
+                   
+                    }
+                });
+        
+        t1.start();
+                }
     }
 
     /**
@@ -32,7 +55,6 @@ public class Relojito extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -41,23 +63,16 @@ public class Relojito extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(145, 145, 145)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addGap(79, 79, 79)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(88, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(82, 82, 82)
-                .addComponent(jLabel1)
-                .addGap(28, 28, 28)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(165, Short.MAX_VALUE))
+                .addGap(55, 55, 55)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         pack();
@@ -92,28 +107,13 @@ public class Relojito extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() { new Relojito().setVisible(true);
-                   while(true){
-        LocalTime tiempo=LocalTime.now();
-        int hora=tiempo.getHour();
-        int minuto=tiempo.getMinute();
-        int segundo=tiempo.getSecond();
-        System.out.println("La hora es "+hora+":"+minuto+":"+segundo);
-        try{
-        Thread.sleep(1000);
-        }catch (InterruptedException ex){
-            Logger.getLogger(ProbarThreads.class.getName()).log(Level.SEVERE,null,ex);
-                    
-        }
-        }
-                
+            public void run() {
+                new Relojito().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }
